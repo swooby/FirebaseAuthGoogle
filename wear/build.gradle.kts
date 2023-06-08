@@ -38,7 +38,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.4.7"
     }
     packaging {
         resources {
@@ -48,29 +48,35 @@ android {
 }
 
 dependencies {
-    implementation(libs.core.ktx)
-    implementation(libs.play.services.wearable)
-    implementation(libs.percentlayout)
-    implementation(libs.legacy.support.v4)
-    implementation(libs.recyclerview)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.ui)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.compose.material)
-    implementation(libs.compose.foundation)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.activity.compose)
-    implementation(libs.tiles)
-    implementation(libs.tiles.material)
-    implementation(libs.horologist.compose.tools)
-    implementation(libs.horologist.tiles)
-    implementation(libs.watchface.complications.data.source.ktx)
-    androidTestImplementation(platform(libs.compose.bom))
-    androidTestImplementation(libs.ui.test.junit4)
-    debugImplementation(libs.ui.tooling)
-    debugImplementation(libs.ui.test.manifest)
+    val androidxComposeBom = platform(libs.androidx.compose.bom)
+    implementation(androidxComposeBom)
+
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.percentlayout)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.wear.compose.foundation)
+    implementation(libs.androidx.wear.compose.material)
+    implementation(libs.androidx.wear.tiles)
+    implementation(libs.androidx.wear.tiles.material)
+    implementation(libs.androidx.wear.watchface.complications.data.source.ktx)
+    implementation(libs.google.android.gms.play.services.auth)
+    implementation(libs.google.android.gms.play.services.wearable)
+    implementation(libs.google.android.horologist.compose.tools)
+    implementation(libs.google.android.horologist.tiles)
+
+    androidTestImplementation(androidxComposeBom)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    debugImplementation(libs.androidx.compose.ui.tooling)
 
     implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.firestore.ktx)
 
     wearApp(project(":wear"))
