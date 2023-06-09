@@ -18,7 +18,9 @@ androidx-wear-compose-material = "1.1.2"
 androidx-wear-tiles = "1.1.0"
 androidx-wear-tiles-material = "1.1.0"
 androidx-wear-watchface-complications-data-source-ktx = "1.1.1"
+coil-compose = "2.4.0"
 firebase-bom = "32.1.0"
+google-accompanist-navigation-animation = "0.31.3-beta"
 google-android-gms-play-services-auth = "20.5.0"
 google-android-gms-play-services-wearable = "18.0.0"
 google-android-horologist-compose-tools = "0.4.8"
@@ -53,9 +55,11 @@ androidx-wear-compose-material = { group = "androidx.wear.compose", name = "comp
 androidx-wear-tiles = { group = "androidx.wear.tiles", name = "tiles", version.ref = "androidx-wear-tiles" }
 androidx-wear-tiles-material = { group = "androidx.wear.tiles", name = "tiles-material", version.ref = "androidx-wear-tiles-material" }
 androidx-wear-watchface-complications-data-source-ktx = { group = "androidx.wear.watchface", name = "watchface-complications-data-source-ktx", version.ref = "androidx-wear-watchface-complications-data-source-ktx" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx" }
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx" }
+google-accompanist-navigation-animation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "google-accompanist-navigation-animation" }
 google-android-gms-play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "google-android-gms-play-services-auth" }
 google-android-gms-play-services-wearable = { group = "com.google.android.gms", name = "play-services-wearable", version.ref = "google-android-gms-play-services-wearable" }
 google-android-horologist-compose-tools = { group = "com.google.android.horologist", name = "horologist-compose-tools", version.ref = "google-android-horologist-compose-tools" }
