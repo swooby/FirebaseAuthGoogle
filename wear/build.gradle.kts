@@ -20,10 +20,10 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
+
         vectorDrawables {
             useSupportLibrary = true
         }
-
     }
 
     buildTypes {
@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.google.dagger.hilt.android)
     kapt(libs.google.dagger.hilt.android.compiler)
     kapt(libs.androidx.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     val androidxComposeBom = platform(libs.androidx.compose.bom)
     implementation(androidxComposeBom)
@@ -80,13 +81,14 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.wear.compose.foundation)
     implementation(libs.androidx.wear.compose.material)
-    implementation(libs.androidx.wear.tiles)
-    implementation(libs.androidx.wear.tiles.material)
+    implementation(libs.androidx.wear.compose.navigation)
     implementation(libs.androidx.wear.watchface.complications.data.source.ktx)
     implementation(libs.google.android.gms.play.services.auth)
     implementation(libs.google.android.gms.play.services.wearable)
     implementation(libs.google.android.horologist.compose.tools)
     implementation(libs.google.android.horologist.tiles)
+
+    implementation(libs.coil.compose)
 
     androidTestImplementation(androidxComposeBom)
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)

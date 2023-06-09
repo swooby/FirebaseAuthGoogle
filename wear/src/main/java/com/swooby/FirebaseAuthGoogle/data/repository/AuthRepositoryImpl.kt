@@ -1,5 +1,6 @@
 package com.swooby.FirebaseAuthGoogle.data.repository
 
+import android.util.Log
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.AuthCredential
@@ -34,6 +35,10 @@ class AuthRepositoryImpl @Inject constructor(
     private var signUpRequest: BeginSignInRequest,
     private val db: FirebaseFirestore
 ) : AuthRepository {
+    companion object {
+        private const val TAG = "AuthRepositoryImpl"
+    }
+
     override val isUserAuthenticatedInFirebase = auth.currentUser != null
 
     override suspend fun oneTapSignInWithGoogle(): OneTapSignInResponse {
@@ -45,6 +50,7 @@ class AuthRepositoryImpl @Inject constructor(
                 val signUpResult = oneTapClient.beginSignIn(signUpRequest).await()
                 Success(signUpResult)
             } catch (e: Exception) {
+                Log.e(TAG, "oneTapSignInWithGoogle: EXCEPTION", e)
                 Failure(e)
             }
         }
@@ -61,6 +67,7 @@ class AuthRepositoryImpl @Inject constructor(
             }
             Success(true)
         } catch (e: Exception) {
+            Log.e(TAG, "firebaseSignInWithGoogle: EXCEPTION", e)
             Failure(e)
         }
     }

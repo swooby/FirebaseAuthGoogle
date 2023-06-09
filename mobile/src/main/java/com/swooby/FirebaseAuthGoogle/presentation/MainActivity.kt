@@ -7,10 +7,10 @@ import androidx.activity.viewModels
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
-import dagger.hilt.android.AndroidEntryPoint
 import com.swooby.FirebaseAuthGoogle.navigation.NavGraph
 import com.swooby.FirebaseAuthGoogle.navigation.Screen.ProfileScreen
 import com.swooby.FirebaseAuthGoogle.presentation.auth.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 @ExperimentalAnimationApi
@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun checkAuthState() {
-        if(viewModel.isUserAuthenticated) {
+        if (viewModel.isUserAuthenticated) {
             navigateToProfileScreen()
         }
     }

@@ -70,13 +70,34 @@ dependencies {
     implementation(androidxComposeBom)
 
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.percentlayout)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.google.android.gms.play.services.auth)
     implementation(libs.google.android.gms.play.services.wearable)
+    implementation(libs.google.android.horologist.compose.tools)
+    implementation(libs.google.android.horologist.tiles)
+
+    implementation(libs.google.accompanist.navigation.animation)
+    implementation(libs.coil.compose)
+
     implementation(libs.google.android.material)
 
-    androidTestImplementation(libs.androidx.test.espresso.core)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    testImplementation(libs.junit)
+    androidTestImplementation(androidxComposeBom)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.firestore.ktx)
 
     wearApp(project(":wear"))
 }

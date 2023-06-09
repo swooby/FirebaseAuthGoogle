@@ -39,7 +39,7 @@ class MainTileService : SuspendingTileService() {
             .setTileTimeline(
                 androidx.wear.protolayout.TimelineBuilders.Timeline.Builder().addTimelineEntry(
                     androidx.wear.protolayout.TimelineBuilders.TimelineEntry.Builder().setLayout(
-                        androidx.wear.protolayout.LayoutElementBuilders.Layout.Builder().setRoot(tileLayout(this)).build()
+                        LayoutElementBuilders.Layout.Builder().setRoot(tileLayout(this)).build()
                     ).build()
                 ).build()
             )

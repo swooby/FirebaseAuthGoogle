@@ -1,28 +1,26 @@
 package com.swooby.FirebaseAuthGoogle.presentation.profile
 
-import androidx.compose.material.Scaffold
-import androidx.compose.material.SnackbarResult.ActionPerformed
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.foundation.layout.PaddingValues
+//import androidx.compose.material.SnackbarResult.ActionPerformed
+//import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.swooby.FirebaseAuthGoogle.core.Constants.REVOKE_ACCESS_MESSAGE
-import com.swooby.FirebaseAuthGoogle.core.Constants.SIGN_OUT
+import androidx.wear.compose.material.Scaffold
 import com.swooby.FirebaseAuthGoogle.presentation.profile.components.ProfileContent
-import com.swooby.FirebaseAuthGoogle.presentation.profile.components.ProfileTopBar
-import com.swooby.FirebaseAuthGoogle.presentation.profile.components.RevokeAccess
 import com.swooby.FirebaseAuthGoogle.presentation.profile.components.SignOut
-import kotlinx.coroutines.launch
 
 @Composable
 fun ProfileScreen(
     viewModel: ProfileViewModel = hiltViewModel(),
     navigateToAuthScreen: () -> Unit
 ) {
-    val scaffoldState = rememberScaffoldState()
+    //val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
+        /*
         topBar = {
             ProfileTopBar(
                 signOut = {
@@ -33,14 +31,15 @@ fun ProfileScreen(
                 }
             )
         },
-        content = { padding ->
+        */
+        content = { //padding ->
             ProfileContent(
-                padding = padding,
+                padding = PaddingValues(0.dp),// padding,
                 photoUrl = viewModel.photoUrl,
                 displayName = viewModel.displayName
             )
         },
-        scaffoldState = scaffoldState
+        //scaffoldState = scaffoldState
     )
 
     SignOut(
@@ -51,6 +50,7 @@ fun ProfileScreen(
         }
     )
 
+    /*
     fun showSnackBar() = coroutineScope.launch {
         val result = scaffoldState.snackbarHostState.showSnackbar(
             message = REVOKE_ACCESS_MESSAGE,
@@ -71,4 +71,5 @@ fun ProfileScreen(
             showSnackBar()
         }
     )
+    */
 }

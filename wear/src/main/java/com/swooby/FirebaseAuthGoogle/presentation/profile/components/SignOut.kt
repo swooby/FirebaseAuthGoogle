@@ -1,4 +1,4 @@
-package com.swooby.FirebaseAuthGoogle.presentation.auth.components
+package com.swooby.FirebaseAuthGoogle.presentation.profile.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -8,23 +8,23 @@ import com.swooby.FirebaseAuthGoogle.core.Utils.Companion.print
 import com.swooby.FirebaseAuthGoogle.domain.model.Response.Failure
 import com.swooby.FirebaseAuthGoogle.domain.model.Response.Loading
 import com.swooby.FirebaseAuthGoogle.domain.model.Response.Success
-import com.swooby.FirebaseAuthGoogle.presentation.auth.AuthViewModel
+import com.swooby.FirebaseAuthGoogle.presentation.profile.ProfileViewModel
 
 @Composable
-fun SignInWithGoogle(
-    viewModel: AuthViewModel = hiltViewModel(),
-    navigateToHomeScreen: (signedIn: Boolean) -> Unit
+fun SignOut(
+    viewModel: ProfileViewModel = hiltViewModel(),
+    navigateToAuthScreen: (signedOut: Boolean) -> Unit
 ) {
-    when (val signInWithGoogleResponse = viewModel.signInWithGoogleResponse) {
+    when (val signOutResponse = viewModel.signOutResponse) {
         is Loading -> ProgressBar()
-        is Success -> signInWithGoogleResponse.data?.let { signedIn ->
-            LaunchedEffect(signedIn) {
-                navigateToHomeScreen(signedIn)
+        is Success -> signOutResponse.data?.let { signedOut ->
+            LaunchedEffect(signedOut) {
+                navigateToAuthScreen(signedOut)
             }
         }
 
         is Failure -> LaunchedEffect(Unit) {
-            print(signInWithGoogleResponse.e)
+            print(signOutResponse.e)
         }
     }
 }

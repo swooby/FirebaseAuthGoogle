@@ -9,6 +9,7 @@ package com.swooby.FirebaseAuthGoogle.presentation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -22,23 +23,44 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.TimeText
+import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import com.swooby.FirebaseAuthGoogle.MyViewModel
 import com.swooby.FirebaseAuthGoogle.R
+import com.swooby.FirebaseAuthGoogle.navigation.NavGraph
+import com.swooby.FirebaseAuthGoogle.navigation.Screen.ProfileScreen
+import com.swooby.FirebaseAuthGoogle.presentation.auth.AuthViewModel
 import com.swooby.FirebaseAuthGoogle.presentation.theme.FirebaseAuthGoogleTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private lateinit var navController: NavHostController
+    private val viewModel by viewModels<AuthViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            WearApp("Android")
+            navController = rememberSwipeDismissableNavController()
+            //WearApp("Android")
+            NavGraph(
+                navController = navController
+            )
+            checkAuthState()
         }
     }
+
+    private fun checkAuthState() {
+        if (viewModel.isUserAuthenticated) {
+            navigateToProfileScreen()
+        }
+    }
+
+    private fun navigateToProfileScreen() = navController.navigate(ProfileScreen.route)
 }
 
 @Composable
